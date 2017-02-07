@@ -1,0 +1,140 @@
+<html>
+   <head>
+      <title>Register</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+     <style>
+         input[type="text"], input[type="password"] {width:200px;}
+         form {width: 250px; height: 460px; margin:0 auto; margin-top: 200px; padding: 20px 20px 20px 20px; border-style: solid; border-width: 5px; border-color: Chocolate;}
+         body {background:url('img/bkg.jpg')}
+         span {color: darkred}
+     </style>
+<!--
+       <script language=JavaScript>
+       </script>
+-->
+   </head>
+    <body background="img/bkg.jpg">
+</form>
+    <h1></h1>
+    <form  role="form" name="register" method="post" action="register.php" onsubmit="return validation(this)">
+    <div class="form-group">
+        <label for="fullname">Fullname<span></span></label>
+        <input type="text" class="form-control" id="fullname"  name="fullname" placeholder="your fullname">
+        </div>
+    <div class="form-group">
+        <label for="password1">Password<span></span></label>
+        <input type="password" class="form-control" id="password1" name="password1" placeholder="your password">
+        </div>
+    <div class="form-group">
+        <label for="password2">Password Again<span></span></label>
+        <input type="password" class="form-control" id="password2" name="password2" placeholder="password again">
+        </div>
+    <div class="form-group">
+        <label for="email">E-mail<span></span></label>
+        <input type="text" class="form-control" id="email" name="email" placeholder="your e-mail">
+        </div>
+    <div class="form-group">
+        <label for="address">Address<span></span></label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="your deliver address">
+        </div>
+    <h1></h1>
+    <div class="button" align="center">
+        <input type="submit" name="submit" class="btn btn-default" value="submit"></input>
+    </div>
+    </form> 
+    <script>
+        var error=[false,false,false,false,false];
+        
+       function validation(register){
+           for(var i=0;i<5;i++){
+           if(!error[i]){
+              return false;
+           }
+           }
+//            console.log("true")
+//            return true;
+       }
+           
+        $(document).ready(function(){
+       $('input#fullname').blur(function(){
+           required('fullname');
+           
+           if (document.getElementById("fullname").value != ""){
+           var reg=/^[\w\x80-\xff]{3,15}$/;
+           if(!reg.test(document.getElementById("fullname").value))
+           {errorHint("fullname"," should be 3 to 15 digits characters or numbers")}
+           else{errorRemove(fullname);
+               error[0]=true;}
+           }
+       })
+       $('input#password1').blur(function(){
+           required('password1');
+           
+           if (document.getElementById("password1").value != ""){
+               var str=document.getElementById("password1").value;
+               var reg1=/[a-zA-Z]/;
+               var reg2=/[\d]/;
+           if(!(reg1.test(str)&&reg2.test(str)&&str.length>=6))
+           {errorHint("password1"," should be at least 6 digits and contains at least one number and one latter")}
+           else{errorRemove(password1);
+               error[1]=true;}
+           }
+       })
+       $('input#password2').blur(function(){
+           required('password2');
+           
+           if (document.getElementById("password2").value != ""){
+           if(document.getElementById("password2").value!=document.getElementById("password1").value)
+           {errorHint("password2"," is not same")}
+           else{errorRemove(password2);
+               error[2]=true;}
+           }
+       })
+       $('input#email').blur(function(){
+           required('email');
+           
+           if (document.getElementById("email").value != ""){
+           var reg=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+           if(!reg.test(document.getElementById("email").value))
+           {errorHint("email"," is in wrong format")}
+           else{errorRemove(email);
+               error[3]=true;}
+           }
+       })
+       $('input#address').blur(function(){
+           required('address');
+           
+           if (document.getElementById("address").value != ""){
+           if(document.getElementById("address").value.length>50)
+           {errorHint("address"," should be at most 50 digits")}
+           else{errorRemove();
+               error[4]=true;}
+           }
+       })
+       
+       })
+    //requierd item
+     function required(id){
+           if(document.getElementById(id).value==""){
+               errorHint(id," is required")
+           }
+           else{
+               errorRemove(id)
+           }   
+     }
+        function errorHint(id,errormessage){
+         $('input[id="'+id+'"]').parent().addClass('has-error');
+         $('div label[for="'+id+'"] span').html(errormessage);
+        }
+        function errorRemove(id){
+         $('input[id="'+id+'"]').parent().removeClass('has-error');
+         $('div label[for="'+id+'"] span').html("");
+        }
+    </script>
+    
+    
+    </body>
+</html>

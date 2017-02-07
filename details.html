@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+#large{
+	
+	width: 500px;
+	height: 300px;
+	
+}
+.thumbs img {
+	border: solid 1px white;
+	width: 70px;
+	height: 70px;
+}
+.thumbs img:hover {
+	border-color: red;
+}
+
+</style>
+</head>
+<body>     
+					
+<div class="col-md-5">	
+<p><img id="large" src="images/lol.png" /></p>
+<p class="thumbs">   
+	<a href="images/lol.png" ><img src="images/lol.png" /></a>
+	<a href="images/lol2.png" ><img src="images/lol2.png" /></a>
+	<a href="images/lol.png" ><img src="images/lol.png" /></a>
+	<a href="images/lol2.png" ><img src="images/lol2.png" /></a>
+	<a href="images/lol.png" ><img src="images/lol.png" /></a>
+</p>
+                        
+                  
+</div>
+						
+						<div class="col-sm-7">
+							<div class="name">
+								<h2>REVALATION</h2>
+						
+
+                                    <p><b>Price:</b> <span>MOP $998</span> </p>
+									
+									  <img src="images/rating.png"  alt="" />
+								<p><b>In Stock:</b> YES </p>
+                                     <p> <div class="input-group"> <b>Quantity:</b> 
+			  	
+     
+                                         <input id="text_box1" type="text" value="1" style="height:44px; width:50px; text-align:center; border:1px solid #ccc;" />
+                                   
+                            
+<div class="btn-group-vertical">
+    <button id="add1"  type="button" class="btn btn-default btn-xs">
+          <span class="glyphicon glyphicon-chevron-up"></span>
+        </button> 
+    <button type="button" id="min1" class="btn btn-default btn-xs">
+          <span class="glyphicon glyphicon-chevron-down"></span> 
+                                    </button>
+                                </div></div>            
+</p>
+                                
+                               
+     <span>
+                                    
+                               
+                                    <a class="btn  btn-default btn-lg" href="2333.html" role="button" style="width:130px; background:#FFECF5">
+									<div align="center" style="color:#CE0000">	Buy</div></a>
+                                     <a class="btn  btn-default btn-lg" href="2333.html" role="button" style="width:130px; background:#CE0000">
+										<div align="center" style="color:white">Add to cart</div></a>
+								
+                                        
+                            </span>
+              
+						</div>
+					</div>
+
+    
+    <div class="category-tab shop-details-tab">
+        	<div class="col-sm-12">
+                
+    <ul id="myTab" class="nav nav-tabs">
+								<li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+								
+								<li><a href="#reviews" data-toggle="tab">Reviews </a></li>
+                </ul>
+            
+					<div id="myTabContent" class="tab-content">
+   <div class="tab-pane fade in active" id="details">
+      <p>111111</p>
+   </div>
+		<div class="tab-pane fade" id="reviews">
+      <p>22222</p>
+   </div>			
+					
+					
+				</div>
+
+    </div>
+    </div>
+    <script>
+	$(function () {
+		var t = $("#text_box1");
+		$("#add1").click(function () {
+			t.val(parseInt(t.val()) + 1)
+			setTotal(); GetCount();
+		})
+		$("#min1").click(function () {
+			if(t.val()>0){
+				t.val(parseInt(t.val()) - 1)
+				setTotal(); GetCount();
+			}
+		})
+		function setTotal() {
+
+			$("#total1").html((parseInt(t.val()) * 9).toFixed(2));
+			$("#newslist-1").val(parseInt(t.val()) * 9);
+		}
+		setTotal();
+	})
+	
+$(document).ready(function(){
+
+	$(".thumbs a").mouseenter(function(){
+		$("#large").attr({ src: $(this).attr("href")});
+		return false;
+	});
+    $(".thumbs a").click(function(){
+		$("#large").attr({ src: $(this).attr("href")});
+		return false;
+	});
+
+});
+</script>
+ 
+</body>
+</html>
